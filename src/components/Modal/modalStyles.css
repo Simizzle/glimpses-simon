@@ -1,0 +1,14 @@
+.modalClass {  
+    text-align: center;  
+    margin-top: 5px;
+    width: 300px;  
+
+  } 
+.modalBody {
+      height: 400px;
+      background-color: lightgrey;
+  } 
+
+.Map {
+    z-index: -1;
+}
