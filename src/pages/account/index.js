@@ -30,7 +30,7 @@ export const Account = () => {
 
 <label>
      Current username: 
-     <input type= "text" placeholder="username" value={username} />
+     <input type= "text" placeholder="username" value={username.username} />
  </label>
 <label>
     Current email:
@@ -182,6 +182,7 @@ export const Account = () => {
       ) : (
         <div></div>
       )}
+      
     </SettingsContainer>
   );
 };

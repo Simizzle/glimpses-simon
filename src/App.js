@@ -14,8 +14,7 @@ const App = () =>  {
     
       return (
         <AppContainer>
-          <Navbar/>
-          
+          <Navbar setUser={setUser}/>
         
           {user ? <Redirect to= '/profile'/> : <Redirect to = '/'/>}
           <Route exact path= '/'>

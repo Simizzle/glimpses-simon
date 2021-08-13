@@ -21,10 +21,10 @@ export const Navbar = ({setUser}) => {
  <nav className="nav-bar">
         <ul>
           <li>
-            <Link to="/profile"><FontAwesomeIcon icon={faHome} /> My profile! </Link>
+            <Link to="/profile"><FontAwesomeIcon icon={faHome} /> Feed!</Link>
           </li>
           <li>
-            <Link to="/MyPosts"><FontAwesomeIcon icon={faComment} /> Posts! </Link>
+            <Link to="/MyPosts"><FontAwesomeIcon icon={faComment} /> My Posts! </Link>
           </li>
           <li>
             <Link to="/FullMap"><FontAwesomeIcon icon={faGlobeAmericas} />Map!</Link> 

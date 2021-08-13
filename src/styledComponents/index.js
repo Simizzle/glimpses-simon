@@ -50,4 +50,5 @@ export const SettingsContainer = styled.div`
 export const AccountForm = styled.div`
     width: 100vw;
     height: 100vh;
+    color: var(--primary);
     `;
