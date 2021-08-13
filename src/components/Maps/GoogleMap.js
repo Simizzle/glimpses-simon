@@ -55,7 +55,7 @@ export class MapContainer extends Component {
     this.setState({ address });
   };
 
-  handleSelect = (address) => {
+  handleSelect = (address, props) => {
     this.setState({ address });
     geocodeByAddress(address)
       .then((results) => getLatLng(results[0]))
@@ -64,6 +64,7 @@ export class MapContainer extends Component {
 
         // update center state
         this.setState({ mapCenter: latLng });
+        this.props.googleprops.setPostData({...this.props.googleprops.postData, location: this.state.mapCenter})
       })
       .catch((error) => console.error("Error", error));
   };
@@ -74,7 +75,7 @@ export class MapContainer extends Component {
         <PlacesAutocomplete
           value={this.state.address}
           onChange={this.handleChange}
-          onSelect={this.handleSelect}
+          onSelect={() => this.handleSelect(this.state.address, this.props)}
         >
           {({
             getInputProps,

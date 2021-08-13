@@ -6,6 +6,7 @@ import FileBase from "react-file-base64";
 import useStyles from "./styles";
 import { createPost, updatePost } from "../../utils";
 import ModalMap from "../Modal/Index"
+import GoogleMap from '../Maps/GoogleMap'
 
 const Form = ({ currentId, setCurrentId }) => {
   const [postData, setPostData] = useState({
@@ -13,6 +14,7 @@ const Form = ({ currentId, setCurrentId }) => {
     title: "",
     message: "",
     tags: "",
+    location: "",
     selectedFile: "",
   });
   const post = useSelector((state) =>
@@ -32,6 +34,7 @@ const Form = ({ currentId, setCurrentId }) => {
       title: "",
       message: "",
       tags: "",
+      location: "",
       selectedFile: "",
     });
   };
@@ -99,8 +102,8 @@ const Form = ({ currentId, setCurrentId }) => {
             setPostData({ ...postData, tags: e.target.value.split(",") })
           }
         />
-        <ModalMap />
-
+        <ModalMap setPostData={setPostData} postData={postData}/>
+      
         <div className={classes.fileInput}>
           <FileBase
             type="file"
