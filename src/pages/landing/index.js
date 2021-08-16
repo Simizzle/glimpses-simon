@@ -23,11 +23,14 @@ export const Landing = ({ user, setUser }) => {
               onSubmit={(e) => fetchUsers(e, email, username, pass, setUser)}
             >
               {newUser && (
+                <label>
+                email:  
                 <LogInput
                   className="login-input"
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Email"
                 />
+                </label>
               )}
 
               <label>
@@ -51,7 +54,7 @@ export const Landing = ({ user, setUser }) => {
               </LogButton>
             </LogForm>
             <LogButton
-              className="btn"
+              className="btn-login"
               type="button"
               onClick={() => setNewUser(!newUser)}
             >

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { SettingsContainer, LogButton, LogForm, LogInput, AccountForm } from "../../styledComponents";
+import { SettingsContainer, LogButton, LogForm, LogInput, AccountForm } from "../../styledComponents/index.js";
 import { deleteUser, editEmail, editPassword, editUsername, fetchUsers } from "../../utils";
-
+import { Redirect } from "react-router-dom";
 
 export const Account = () => {
   const [newUsername, setNewUsername] = useState();
@@ -15,6 +15,7 @@ export const Account = () => {
   const [confirmPass, setConfirmPass] = useState(false)
   const [pass, setPass] = useState("");
   const [error, setError] = useState({ error: false, message: "" });
+
   
   useEffect(() => {
       
@@ -176,7 +177,7 @@ export const Account = () => {
               onChange={(e) => setOldPassword(e.target.value)}
               placeholder="Password"
             />
-            <LogButton type="submit">Submit</LogButton>
+            <LogButton type="submit" >Submit</LogButton>
           </LogForm>
         </div>
       ) : (

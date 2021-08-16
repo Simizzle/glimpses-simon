@@ -30,9 +30,6 @@ class ModalMap extends React.Component {
             </Modal.Body>  
             </div>
           <Modal.Footer>  
-            <Button onClick={
-            // () => addLocationToPost(latLang),
-            ()=>this.handleModal()}>Close</Button>  
             <Button onClick={()=>this.handleModal()}>Save Location</Button>  
           </Modal.Footer>  
         </Modal>  

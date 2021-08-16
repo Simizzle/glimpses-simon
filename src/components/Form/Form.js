@@ -14,7 +14,7 @@ const Form = ({ currentId, setCurrentId }) => {
     title: "",
     message: "",
     tags: "",
-    location: "",
+    location: "", 
     selectedFile: "",
   });
   const post = useSelector((state) =>
@@ -43,11 +43,11 @@ const Form = ({ currentId, setCurrentId }) => {
     e.preventDefault();
 
     if (currentId === 0) {
-      dispatch(createPost(postData));
+      createPost(postData);
       clear();
     } else {
-      dispatch(updatePost(currentId, postData));
-      clear();
+    (updatePost(currentId, postData));
+    clear();
     }
   };
 

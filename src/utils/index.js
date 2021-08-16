@@ -12,14 +12,26 @@ export const getPosts = () => async (dispatch) => {
   }
 };
 
-export const createPost = (post) => async (dispatch) => {
-  try {
-    const { data } = await api.createPost(post);
+// export const createPost = (post) => async (dispatch) => {
+//   try {
+//     const { data } = await fetch(`${process.env.REACT_APP_REST_API}posts`);
+//     dispatch({ type: CREATE, payload: data });
+//   } catch (error) {
+//     console.log(error.message);
+//   }
+//   console.log(dispatch)
+// };
 
-    dispatch({ type: CREATE, payload: data });
-  } catch (error) {
-    console.log(error.message);
-  }
+export const createPost = async (bodyObj) => {
+  const response = await fetch(`${process.env.REACT_APP_REST_API}posts`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(
+      bodyObj
+    ),
+  });
+  const data = await response.json();
+  console.log(data)
 };
 
 export const updatePost = (id, post) => async (dispatch) => {
@@ -82,8 +94,8 @@ export const fetchUsers = async (e, email, username, pass, setUser, setUsername,
   export const editUsername = async (e, oldUsername, newUsername) => {
     e.preventDefault();
     try {
-      await fetch(`${process.env.REACT_APP_REST_API}users`, {
-        method: "Put",
+      await fetch(`${process.env.REACT_APP_REST_API}users/${oldUsername}`, {
+        method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           oldUsername: oldUsername,
@@ -103,8 +115,8 @@ export const fetchUsers = async (e, email, username, pass, setUser, setUsername,
   ) => {
     e.preventDefault();
     try {
-      await fetch(`${process.env.REACT_APP_REST_API}users`, {
-        method: "Put",
+      await fetch(`${process.env.REACT_APP_REST_API}users/${oldUsername}`, {
+        method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           oldUsername: oldUsername,
@@ -115,17 +127,18 @@ export const fetchUsers = async (e, email, username, pass, setUser, setUsername,
     } catch (error) {
       console.log(error);
     }
+    console.log("Password is changed successfully")
   };
   
   export const editEmail = async (e, oldUsername, oldPassword, newEmail) => {
     e.preventDefault();
     try {
-      await fetch(`${process.env.RREACT_APP_REST_API}users`, {
-        method: "Put",
+      await fetch(`${process.env.RREACT_APP_REST_API}users/${oldUsername}`, {
+        method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          oldUsername: oldUsername,
-          oldPassword: oldPassword,
+          username: oldUsername,
+         password: oldPassword,
           email: newEmail,
         }),
       });
@@ -136,14 +149,15 @@ export const fetchUsers = async (e, email, username, pass, setUser, setUsername,
   
   export const deleteUser = async (e, oldUsername, oldPassword) => {
     e.preventDefault();
-    await fetch(`${process.env.REACT_APP_REST_API}deleteUsers`, {
-      method: "POST",
+    await fetch(`${process.env.REACT_APP_REST_API}users/${oldUsername}`, {
+      method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         username: oldUsername,
         password: oldPassword,
       }),
     });
+    console.log("User deleted successfully");
   };
 
 
