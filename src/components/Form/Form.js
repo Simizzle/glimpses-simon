@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import { TextField, Button, Typography, Paper } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import FileBase from "react-file-base64";
+import { CloudinaryContext, Image } from "cloudinary-react";
 
 import useStyles from "./styles";
 import { createPost, updatePost } from "../../utils";
-import ModalMap from "../Modal/Index"
-import GoogleMap from '../Maps/GoogleMap'
+import ModalMap from "../Modal/Index";
+import GoogleMap from "../Maps/GoogleMap";
 
 const Form = ({ currentId, setCurrentId }) => {
   const [postData, setPostData] = useState({
@@ -14,8 +15,9 @@ const Form = ({ currentId, setCurrentId }) => {
     title: "",
     message: "",
     tags: "",
-    location: "", 
+    location: "",
     selectedFile: "",
+    publicID: "",
   });
   const post = useSelector((state) =>
     currentId ? state.posts.find((message) => message._id === currentId) : null
@@ -36,6 +38,7 @@ const Form = ({ currentId, setCurrentId }) => {
       tags: "",
       location: "",
       selectedFile: "",
+      publicID: "",
     });
   };
 
@@ -43,12 +46,50 @@ const Form = ({ currentId, setCurrentId }) => {
     e.preventDefault();
 
     if (currentId === 0) {
+      console.log(postData);
       createPost(postData);
-      clear();
+      // clear();
     } else {
-    (updatePost(currentId, postData));
-    clear();
+      updatePost(currentId, postData);
+      clear();
     }
+  };
+
+  const uploadImage = async (image) => {
+    const data = new FormData();
+
+    data.append("file", image);
+    data.append("upload_preset", "jc6pihar");
+    data.append("cloud_name", "dbonvkpgh");
+    console.log(data);
+    const response = await fetch(
+      "https://api.cloudinary.com/v1_1/dbonvkpgh/image/upload",
+      {
+        method: "POST",
+        body: data,
+      }
+    );
+    const dat = await response.json();
+    console.log(dat);
+    await setPostData({ ...postData, selectedFile: "" });
+    await setPostData({
+      ...postData,
+      publicID: dat.public_id,
+    });
+    // fetch("https://api.cloudinary.com/v1_1/dbonvkpgh/image/upload", {
+    //   method: "POST",
+    //   body: data,
+    // })
+    //   .then((resp) => resp.json())
+    //   .then((data) => {
+    //     setPostData({
+    //       ...postData,
+    //       publicID: data.public_id,
+    //       selectedFile: "",
+    //     });
+    //     console.log(postData);
+    //   })
+    //   .catch((err) => console.log(err));
   };
 
   return (
@@ -102,15 +143,15 @@ const Form = ({ currentId, setCurrentId }) => {
             setPostData({ ...postData, tags: e.target.value.split(",") })
           }
         />
-        <ModalMap setPostData={setPostData} postData={postData}/>
-      
+        <ModalMap setPostData={setPostData} postData={postData} />
+
         <div className={classes.fileInput}>
           <FileBase
             type="file"
             multiple={false}
-            onDone={({ base64 }) =>
-              setPostData({ ...postData, selectedFile: base64 })
-            }
+            onDone={({ base64 }) => {
+              uploadImage(base64);
+            }}
           />
         </div>
         <Button

@@ -13,6 +13,7 @@
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
     "bootstrap": "^5.1.0",
+    "cloudinary-react": "^1.7.0",
     "dotenv": "^10.0.0",
     "font-awesome": "^4.7.0",
     "google-map-react": "^2.1.10",

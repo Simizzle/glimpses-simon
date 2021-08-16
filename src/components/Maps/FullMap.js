@@ -5,7 +5,11 @@ import PlacesAutocomplete, {
   getLatLng,} from "react-places-autocomplete";
 import stylesArray from "./mapStyles";
 import './GoogleMap.css'
+import { useDispatch } from 'react-redux';
+// import { getPosts } from '../../utils';
 
+const Post = ({ post, setCurrentId }) => {
+  const dispatch = useDispatch();}
 
 
 export class FullMap extends Component {
