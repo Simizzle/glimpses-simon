@@ -27,7 +27,7 @@ export const Navbar = ({setUser}) => {
             <Link to="/MyPosts" className="navText"><FontAwesomeIcon icon={faComment} /> Posts </Link>
           </li>
           <li>
-            <Link to="/FullMap" className="navText"><FontAwesomeIcon icon={faGlobeAmericas} />Map</Link> 
+            <Link to="/FullMap" className="navText"><FontAwesomeIcon icon={faGlobeAmericas} /> Map </Link> 
           </li>
           <li>
             <Link to="/account" className="navText"><FontAwesomeIcon icon={faUserCircle} /> Account Details </Link>

@@ -2,12 +2,10 @@ import React, { useState, useEffect } from "react";
 import { TextField, Button, Typography, Paper } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import FileBase from "react-file-base64";
-import { CloudinaryContext, Image } from "cloudinary-react";
-
 import useStyles from "./styles";
 import { createPost, updatePost } from "../../utils";
 import ModalMap from "../Modal/Index";
-import GoogleMap from "../Maps/GoogleMap";
+
 
 const Form = ({ currentId, setCurrentId }) => {
   const [postData, setPostData] = useState({

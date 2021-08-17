@@ -5,16 +5,25 @@ import { Landing } from "./pages/landing";
 import { Account } from "./pages/account";
 import { Navbar } from "./components/navbar";
 import  FullMap  from "./components/Maps/FullMap"
-// import { Profile } from "./pages/profile";
+import  Profile from "./pages/profile";
 import  MyPosts from "./pages/MyPosts/index.js";
 
 
 const App = () =>  {
     const[user, setUser] =useState();
+    const[posts, setPosts] = useState([])
+    const [bool, setBool] = useState(false);
+    useEffect(async () => {
+      const response = await fetch(`${process.env.REACT_APP_REST_API}posts`);
+      const data = await response.json();
+      setPosts(data)
+      console.log(posts);
+      setBool(true);
+    }, [bool]);
     
       return (
         <AppContainer>
-          <Navbar/>
+          <Navbar setUser={setUser}/>
           
         
           {user ? <Redirect to= '/profile'/> : <Redirect to = '/'/>}
@@ -25,15 +34,15 @@ const App = () =>  {
         <Account user={user}/>
       </Route>
          
-          {/* <Route path='/profile'>
+          <Route path='/profile'>
             <Profile user={user}/>
-          </Route> */}
+          </Route>
           <Route path='/MyPosts'>
             <MyPosts user={user}/>
             
           </Route>
           <Route path='/FullMap'>
-          <FullMap />
+          <FullMap posts={posts}/>
           </Route>
         </AppContainer>
         
