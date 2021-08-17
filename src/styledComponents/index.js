@@ -9,14 +9,13 @@ export const PageContainer= styled.div `
 export const LogButton = styled.button`
 width: 300px;
 height: 5vh;
-margin: 5px;
+margin: 30px;
 background: var(--secondary);
-font-weight: 700;
-font-size: 16px;
+font-size: 20px;
 color: var(--primary);
-border: none;
-border-radius: 5px;
-&:hover { background-color: var(--tertiary); color: var(--white) }
+border: clear;
+border-radius: 20px;
+&:hover { background-color:blueviolet; color: var(--white) }
 `;
 
 export const LogForm = styled.form`
@@ -33,21 +32,33 @@ export const LogInput = styled.input`
   margin: 5px;
 `;
 export const SettingsContainer = styled.div`
-  color: var(--primary);
+ 
+  color: whitesmoke;
   width: 100vw;
   height: 85vh;
-  padding: 10px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   text-align: center;
+
 `;
+
+
 
 // export const ProfileContainer= styled.div`
 //     width:200vw;
 //     height:100vh;
 // `;
 
-export const AccountForm = styled.div`
-    width: 100vw;
-    height: 100vh;
-    `;
+
+
+export const AccountTitle = styled.h1`
+font-size: 3.5rem;
+font-weight: 800;
+color: black; 
+line-height: 42px;
+text-transform: uppercase;
+text-shadow: 0 2px white;
+font-family: 'Ultra', sans-serif;
+
+`

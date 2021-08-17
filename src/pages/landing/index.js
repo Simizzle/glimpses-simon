@@ -74,7 +74,9 @@ const LogInput = styled.input`
 const LogForm = styled.form`
   width: 35vw;
   color: white;
+  
 `;
 const LogButton = styled.button`
   width: 20vw;
+  
 `;

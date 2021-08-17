@@ -103,16 +103,11 @@ export const fetchUsers = async (e, email, username, pass, setUser, setUsername,
         }),
       });
     } catch (error) {
-      console.log(error);
+      console.log("username changed successfully");
     }
   };
   
-  export const editPassword = async (
-    e,
-    oldUsername,
-    oldPassword,
-    newPassword
-  ) => {
+  export const editPassword = async (e, oldUsername, oldPassword, newPassword) => {
     e.preventDefault();
     try {
       await fetch(`${process.env.REACT_APP_REST_API}users/${oldUsername}`, {
@@ -130,23 +125,24 @@ export const fetchUsers = async (e, email, username, pass, setUser, setUsername,
     console.log("Password is changed successfully")
   };
   
-  export const editEmail = async (e, oldUsername, oldPassword, newEmail) => {
+  export const editEmail = async (e, username, oldUsername, oldPassword, email) => {
     e.preventDefault();
     try {
-      await fetch(`${process.env.RREACT_APP_REST_API}users/${oldUsername}`, {
+      await fetch(`${process.env.REACT_APP_REST_API}users/${username}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          username: oldUsername,
-         password: oldPassword,
-          email: newEmail,
+          oldUsername: oldUsername,
+          oldPassword: oldPassword,
+          email: email,
         }),
       });
     } catch (error) {
       console.log(error);
     }
+    console.log("email is changed successfully")
   };
-  
+
   export const deleteUser = async (e, oldUsername, oldPassword) => {
     e.preventDefault();
     await fetch(`${process.env.REACT_APP_REST_API}users/${oldUsername}`, {
