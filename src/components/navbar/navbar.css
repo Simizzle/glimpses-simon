@@ -56,5 +56,9 @@
     justify-content: center;
     align-items: center;
     color: white;
+    transition: 0.3s;
     /* border: none;   */
+  }
+  .btn-logout:hover{
+    background-color: darkblue  ;
   }
