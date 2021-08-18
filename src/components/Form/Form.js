@@ -5,6 +5,8 @@ import FileBase from "react-file-base64";
 import useStyles from "./styles";
 import { createPost, updatePost } from "../../utils";
 import ModalMap from "../Modal/Index";
+import  logo  from "../../logo/glimpses_logo-01.svg"
+import Posts from "../Posts/Posts";
 
 
 const Form = ({ currentId, setCurrentId }) => {
@@ -85,7 +87,7 @@ const Form = ({ currentId, setCurrentId }) => {
         onSubmit={handleSubmit}
       >
         <Typography variant="h6">
-          {currentId ? `Editing "${post.title}"` : "Creating a Memory"}
+          {currentId ? `Editing "${post.title}"` : <img src={logo} width="200px"/> }
         </Typography>
         <TextField
           name="creator"
@@ -145,6 +147,7 @@ const Form = ({ currentId, setCurrentId }) => {
           size="large"
           type="submit"
           fullWidth
+          // onCLick={useEffect(() => Posts)}
         >
           Submit
         </Button>

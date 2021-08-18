@@ -23,27 +23,30 @@ const App = () =>  {
     
       return (
         <AppContainer>
-          <Navbar setUser={setUser}/>
-          
-        
           {user ? <Redirect to= '/profile'/> : <Redirect to = '/'/>}
           <Route exact path= '/'>
             <Landing setUser ={setUser}/>
           </Route>
+          <div>
           <Route path='/account'>
+          <Navbar setUser={setUser}/>
         <Account user={user}/>
-      </Route>
+           </Route>
          
           <Route path='/profile'>
+          <Navbar setUser={setUser}/>
             <Profile user={user}/>
           </Route>
           <Route path='/MyPosts'>
+          <Navbar setUser={setUser}/>
             <MyPosts user={user}/>
             
           </Route>
           <Route path='/FullMap'>
+          <Navbar setUser={setUser}/>
           <FullMap posts={posts}/>
           </Route>
+          </div>
         </AppContainer>
         
       );

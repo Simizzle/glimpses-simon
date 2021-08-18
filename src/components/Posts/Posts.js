@@ -14,6 +14,7 @@ const Posts = ({ setCurrentId }) => {
     setPosts(data);
     setBool(true);
   }, [bool]);
+  
   return !posts.length ? (
     <CircularProgress />
   ) : (

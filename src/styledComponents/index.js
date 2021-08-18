@@ -51,3 +51,13 @@ export const AccountForm = styled.div`
     width: 100vw;
     height: 100vh;
     `;
+
+export const AccountTitle = styled.h1`
+font-size: 3.5rem;
+font-weight: 800;
+color: black; 
+line-height: 42px;
+text-transform: uppercase;
+text-shadow: 0 2px white;
+font-family: 'Ultra', sans-serif;
+`;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect} from "react";
 import {
   Card,
   CardActions,
@@ -11,7 +11,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import moment from "moment";
 import { useDispatch } from "react-redux";
-import { CloudinaryContext, Image } from "cloudinary-react";
+import { CloudinaryContext, Image, Transformation } from "cloudinary-react";
 
 import { likePost, deletePost } from "../../../utils";
 import useStyles from "./styles";
@@ -27,7 +27,7 @@ const Post = ({ post, setCurrentId }) => {
           <Image 
           publicId={post.publicID}
           width = "100%"
-          height = "300"
+          max-height = "400px"
           />
         </div>
       </CloudinaryContext>
@@ -65,13 +65,13 @@ const Post = ({ post, setCurrentId }) => {
         </Typography>
       </CardContent>
       <CardActions className={classes.cardActions}>
-        <Button
+        {/* <Button
           size="small"
           color="primary"
           onClick={() => dispatch(likePost(post._id))}
         >
           <ThumbUpAltIcon fontSize="small" /> Like {post.likeCount}{" "}
-        </Button>
+        </Button> */}
         <Button
           size="small"
           color="primary"
