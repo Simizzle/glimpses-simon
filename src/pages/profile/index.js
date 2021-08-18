@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import Posts from '../../components/Posts/Posts';
 import { getPosts } from '../../utils';
 import useStyles from '../../styles';
+import  logo  from "../../logo/glimpses_logo-01.svg"
 
 
 
@@ -20,10 +21,9 @@ const Profile = () => {
 
   return (
     <Container maxWidth="lg">
+         
       <AppBar className={classes.appBar} position="static" color="inherit">
-        <Typography className={classes.heading} variant="h2" align="center">GLIMPSES - MY FEED</Typography>
-        
-        
+        <Typography className={classes.heading} variant="h2" align="center"><img src={logo} width="350px"/>  -  MY FEED</Typography>
       </AppBar>
       <Grow in>
         <Container>

@@ -137,7 +137,7 @@ export class FullMap extends Component {
           {return (<Marker
             key = {index}
             onClick={this.onMarkerClick}
-            name={<div>
+            name={<div className="popUp">
               <h1>{post.creator}</h1>
               <h2>{post.title}</h2>
               <p>{post.message}</p>
@@ -154,7 +154,7 @@ export class FullMap extends Component {
               lng: post.location.lng,
             }}
             icon={{
-              url: '../../Star.svg',
+              url: '../../glimpses_icon-01.svg',
               scaledSize: new window.google.maps.Size(40, 40)
             }}
           />)})}

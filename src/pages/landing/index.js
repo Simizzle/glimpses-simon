@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { fetchUsers } from "../../utils";
 import { Redirect } from "react-router-dom";
 import "./landing.css";
+import  logo  from "../../logo/glimpses_logo-01.svg"
 
 export const Landing = ({ user, setUser }) => {
   const [newUser, setNewUser] = useState(false);
@@ -14,9 +15,7 @@ export const Landing = ({ user, setUser }) => {
   return (
     <div className="overlay">
       <div className="wrapper">
-        <div className="banner">
-          <h1> GLIMPSES </h1>
-        </div>
+        <img src={logo} width="70%"/>
         <div className="login-holder">
           <PageContainer className="login">
             <LogForm

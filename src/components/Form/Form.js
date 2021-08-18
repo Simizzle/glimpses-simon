@@ -74,20 +74,6 @@ const Form = ({ currentId, setCurrentId }) => {
       ...postData,
       publicID: dat.public_id,
     });
-    // fetch("https://api.cloudinary.com/v1_1/dbonvkpgh/image/upload", {
-    //   method: "POST",
-    //   body: data,
-    // })
-    //   .then((resp) => resp.json())
-    //   .then((data) => {
-    //     setPostData({
-    //       ...postData,
-    //       publicID: data.public_id,
-    //       selectedFile: "",
-    //     });
-    //     console.log(postData);
-    //   })
-    //   .catch((err) => console.log(err));
   };
 
   return (
