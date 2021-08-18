@@ -3,7 +3,6 @@ import {
   Card,
   CardActions,
   CardContent,
-  CardMedia,
   Button,
   Typography,
 } from "@material-ui/core/";
@@ -25,7 +24,11 @@ const Post = ({ post, setCurrentId }) => {
     <Card className={classes.card}>
       <CloudinaryContext cloudName="dbonvkpgh">
         <div>
-          <Image publicId={post.publicID} />
+          <Image 
+          publicId={post.publicID}
+          width = "100%"
+          height = "300"
+          />
         </div>
       </CloudinaryContext>
       <div className={classes.overlay}>

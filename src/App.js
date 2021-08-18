@@ -5,39 +5,57 @@ import { Landing } from "./pages/landing";
 import { Account } from "./pages/account";
 import { Navbar } from "./components/navbar";
 import  FullMap  from "./components/Maps/FullMap"
-// import { Profile } from "./pages/profile";
+import  Profile from "./pages/profile";
 import  MyPosts from "./pages/MyPosts/index.js";
+import { authUser } from "./utils/index";
+
 
 
 const App = () =>  {
     const[user, setUser] =useState();
+    const[posts, setPosts] = useState([])
+    const [bool, setBool] = useState(false);
+    useEffect(async () => {
+      const response = await fetch(`${process.env.REACT_APP_REST_API}posts`);
+      const data = await response.json();
+      setPosts(data)
+      console.log(posts);
+      setBool(true);
+    }, [bool]);
+
+    useEffect(()=>{
+      authUser(setUser)
+    }, [user])
     
+
+
+
+
       return (
         <AppContainer>
-          <Navbar setUser={setUser}/>
-        
-          
-        
           {user ? <Redirect to= '/profile'/> : <Redirect to = '/'/>}
           <Route exact path= '/'>
             <Landing setUser ={setUser}/>
           </Route>
+          <div>
           <Route path='/account'>
+          <Navbar setUser={setUser}/>
         <Account user={user}/>
-      </Route>
-         
-          {/* <Route path='/profile'>
+           </Route>
+          <Route path='/profile'>
+          <Navbar setUser={setUser}/>
             <Profile user={user}/>
-          </Route> */}
+          </Route>
           <Route path='/MyPosts'>
+          <Navbar setUser={setUser}/>
             <MyPosts user={user}/>
-            
           </Route>
           <Route path='/FullMap'>
-          <FullMap />
+          <Navbar setUser={setUser}/>
+          <FullMap posts={posts}/>
           </Route>
+          </div>
         </AppContainer>
-        
       );
     };
     const AppContainer = styled(Router)`
@@ -45,6 +63,4 @@ const App = () =>  {
       height: 100vh;
       background-color: black;
     `;
-    
     export default App;
-    

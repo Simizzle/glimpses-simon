@@ -1,15 +1,12 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import { Map, Marker, GoogleApiWrapper, InfoWindow } from "google-maps-react";
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,} from "react-places-autocomplete";
 import stylesArray from "./mapStyles";
 import './GoogleMap.css'
-import { useDispatch } from 'react-redux';
-// import { getPosts } from '../../utils';
+import { CloudinaryContext, Image, Transformation } from "cloudinary-react";
 
-const Post = ({ post, setCurrentId }) => {
-  const dispatch = useDispatch();}
 
 
 export class FullMap extends Component {
@@ -66,7 +63,7 @@ export class FullMap extends Component {
         console.log("Success", latLng);
 
         // update center state
-        this.setState({ mapCenter: latLng });
+        // this.setState({ mapCenter: latLng });
       })
       .catch((error) => console.error("Error", error));
   };
@@ -123,32 +120,46 @@ export class FullMap extends Component {
           google={this.props.google}
           style={{ width: "100%", height: "91%", position: "center" }}
           className={"map"}
-          zoom={5}
+          zoom={3}
           initialCenter={{
             lat: this.state.mapCenter.lat,
             lng: this.state.mapCenter.lng,
           }}
           center={{
-            lat: this.state.mapCenter.lat,
-            lng: this.state.mapCenter.lng,
+            // lat: this.state.mapCenter.lat,
+            // lng: this.state.mapCenter.lng,
           }}
           onClick={this.onMapClicked}
           onReady={(mapProps, map) => this._mapLoaded(mapProps, map)}
         >
         
-          <Marker
+          {this.props.posts.map((post, index) =>
+          {return (<Marker
+            key = {index}
             onClick={this.onMarkerClick}
-            name={<h1>PHOTO HERE</h1>}
-            position={{
-              lat: this.state.mapCenter.lat,
-              lng: this.state.mapCenter.lng,
+            name={<div className="popUp">
+              <h1>{post.creator}</h1>
+              <h2>{post.title}</h2>
+              <p>{post.message}</p>
+                <CloudinaryContext cloudName="dbonvkpgh">
+             <div>
+            <Image publicId={post.publicID}>
+            <Transformation  width="500" crop="fill" radius="20" />
+              </Image>
+            </div>
+                </CloudinaryContext>     
+            </div>}
+            position={{ 
+              lat: post.location.lat,
+              lng: post.location.lng,
             }}
             icon={{
-              url: '../../Star.svg',
+              url: '../../glimpses_icon-01.svg',
               scaledSize: new window.google.maps.Size(40, 40)
             }}
-          />
+          />)})}
           <InfoWindow
+            
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}
           >

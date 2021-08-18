@@ -58,7 +58,20 @@ text-shadow: 5px 5px 0px #eb452b,
   padding-left: 1vh;
   padding-right: 1vh;
   
+  
  }
+ .login-inputPass{
+     -webkit-text-security:disc;
+     min-width: 40%;
+     margin-left: 4vw;
+     margin-right: 4vw;
+     margin-bottom: 3vh;
+     min-height: 3vh;
+     border-radius: 6% 6% 6% 6%;
+     padding-left: 1vh;
+     padding-right: 1vh;
+ }
+ 
  .btn{
      max-width: 40%;
      margin-left: 4vw;

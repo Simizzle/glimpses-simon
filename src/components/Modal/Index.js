@@ -2,7 +2,7 @@ import React from 'react';
 import './modalStyles.css'
 import { Button, Modal} from 'react-bootstrap';  
 import GoogleMap from '../Maps/GoogleMap';
-// import latLang from '../Maps/GoogleMap'
+import  logo  from "../../logo/glimpses_logo-01.svg"
 
 class ModalMap extends React.Component {  
   constructor(){  
@@ -23,7 +23,10 @@ class ModalMap extends React.Component {
         </div>  
           
         <Modal show={this.state.show} onHide={()=>this.handleModal()}>  
-          <Modal.Header closeButton><h1>Tag The Location</h1></Modal.Header>  
+          <Modal.Header closeButton>
+          <img src={logo} width="150px"/>
+            <h3 align-items="center">Tag Location</h3>
+            </Modal.Header>  
           <div className="modalBody">
           <Modal.Body>
               <GoogleMap googleprops={this.props}/>

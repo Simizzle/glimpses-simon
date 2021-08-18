@@ -137,14 +137,8 @@ export class MapContainer extends Component {
         >
         
           <Marker
-            onClick={this.onMarkerClick}
-            name={<h1>Balls</h1>}
-            position={{
-              lat: this.state.mapCenter.lat,
-              lng: this.state.mapCenter.lng,
-            }}
             icon={{
-              url: '../../Star.svg',
+              url: '../../glimpses_icon-01.svg',
               scaledSize: new window.google.maps.Size(40, 40)
             }}
           />
