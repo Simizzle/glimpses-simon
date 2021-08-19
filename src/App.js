@@ -13,12 +13,15 @@ const App = () =>  {
     const[user, setUser] =useState();
     const[posts, setPosts] = useState([])
     const [bool, setBool] = useState(false);
+
+    const fetchPosts = async () => { const response = await fetch(`${process.env.REACT_APP_REST_API}posts`);
+    const data = await response.json();
+    setPosts(data)
+    console.log(posts);
+  }
+
     useEffect(() => {
-      const fetchPosts = async () => { const response = await fetch(`${process.env.REACT_APP_REST_API}posts`);
-      const data = await response.json();
-      setPosts(data)
-      console.log(posts);
-    }
+      
       setBool(true);
       fetchPosts();
       authUser(setUser)
