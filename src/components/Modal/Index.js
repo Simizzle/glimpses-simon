@@ -24,7 +24,7 @@ class ModalMap extends React.Component {
           
         <Modal show={this.state.show} onHide={()=>this.handleModal()}>  
           <Modal.Header closeButton>
-          <img src={logo} width="150px"/>
+          <img src={logo} width="150px" alt="logo"/>
             <h3 align-items="center">Tag Location</h3>
             </Modal.Header>  
           <div className="modalBody">

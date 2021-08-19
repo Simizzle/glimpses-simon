@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { TextField, Button, Typography, Paper } from "@material-ui/core";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import FileBase from "react-file-base64";
 import useStyles from "./styles";
 import { createPost, updatePost } from "../../utils";
 import ModalMap from "../Modal/Index";
 import  logo  from "../../logo/glimpses_logo-01.svg"
-import Posts from "../Posts/Posts";
 
 
-const Form = ({ currentId, setCurrentId }) => {
+const Form = ({ currentId, setCurrentId, setBool, bool }) => {
   const [postData, setPostData] = useState({
     creator: "",
     title: "",
@@ -18,11 +17,11 @@ const Form = ({ currentId, setCurrentId }) => {
     location: "",
     selectedFile: "",
     publicID: "",
+
   });
   const post = useSelector((state) =>
     currentId ? state.posts.find((message) => message._id === currentId) : null
   );
-  const dispatch = useDispatch();
   const classes = useStyles();
 
   useEffect(() => {
@@ -87,7 +86,7 @@ const Form = ({ currentId, setCurrentId }) => {
         onSubmit={handleSubmit}
       >
         <Typography variant="h6">
-          {currentId ? `Editing "${post.title}"` : <img src={logo} width="200px"/> }
+          {currentId ? `Editing "${post.title}"` : <img src={logo} width="200px" alt="logo"/> }
         </Typography>
         <TextField
           name="creator"
@@ -140,17 +139,18 @@ const Form = ({ currentId, setCurrentId }) => {
             }}
           />
         </div>
-        <Button
+        {bool && <Button
           className={classes.buttonSubmit}
           variant="contained"
           color="primary"
           size="large"
           type="submit"
+          onClick={() => setBool(false)}
           fullWidth
           // onCLick={useEffect(() => Posts)}
         >
           Submit
-        </Button>
+        </Button>}
         <Button
           variant="contained"
           color="secondary"

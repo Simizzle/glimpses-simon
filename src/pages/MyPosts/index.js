@@ -13,8 +13,10 @@ import useStyles from '../../styles';
 
 const MyPosts = () => {
   const [currentId, setCurrentId] = useState(0);
+  const [bool, setBool] = useState(false);
   const dispatch = useDispatch();
   const classes = useStyles();
+ 
 
   useEffect(() => {
     dispatch(getPosts());
@@ -23,7 +25,7 @@ const MyPosts = () => {
   return (
     <Container maxWidth="lg">
       <AppBar className={classes.appBar} position="static" color="inherit">
-        <Typography className={classes.heading} variant="h2" align="center"><img src={logo} width="350px"/> -  CREATE A POST</Typography>
+        <Typography className={classes.heading} variant="h2" align="center"><img src={logo} width="350px" alt="logo"/> -  CREATE A POST</Typography>
         
 
       </AppBar>
@@ -31,10 +33,10 @@ const MyPosts = () => {
         <Container>
           <Grid container justify="space-between" alignItems="stretch" spacing={3}>
             <Grid item xs={12} sm={7}>
-              <Posts setCurrentId={setCurrentId} />
+              <Posts setCurrentId={setCurrentId} bool={bool} setBool={setBool} />
             </Grid>
             <Grid item xs={12} sm={4}>
-              <Form currentId={currentId} setCurrentId={setCurrentId} />
+              <Form currentId={currentId} setCurrentId={setCurrentId} setBool={setBool} bool={bool}/>
             </Grid>
           </Grid>
         </Container>

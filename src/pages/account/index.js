@@ -15,7 +15,7 @@ export const Account = () => {
       <div>
        <AccountTitle><h1>Your Profile</h1></AccountTitle> 
 
-        <LogButton
+        <LogButton 
           onClick={(e) => {
             setSetting(1);
           }}
