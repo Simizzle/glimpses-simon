@@ -14,18 +14,20 @@ const App = () =>  {
     const[posts, setPosts] = useState([])
     const [bool, setBool] = useState(false);
 
-    const fetchPosts = async () => { const response = await fetch(`${process.env.REACT_APP_REST_API}posts`);
+    
+
+    useEffect(() => {
+      if (bool === false) {
+      const fetchPosts = async () => { const response = await fetch(`${process.env.REACT_APP_REST_API}posts`);
     const data = await response.json();
     setPosts(data)
     console.log(posts);
   }
-
-    useEffect(() => {
-      
       setBool(true);
       fetchPosts();
+}
       authUser(setUser)
-    }, [bool, fetchPosts]);
+    }, [bool]);
       return (
         <AppContainer>
           {user ? <Redirect to= '/profile'/> : <Redirect to = '/'/>}
