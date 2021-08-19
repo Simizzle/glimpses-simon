@@ -25,7 +25,7 @@ const App = () =>  {
       setBool(true);
       fetchPosts();
       authUser(setUser)
-    }, [bool]);
+    }, [bool, fetchPosts]);
       return (
         <AppContainer>
           {user ? <Redirect to= '/profile'/> : <Redirect to = '/'/>}
