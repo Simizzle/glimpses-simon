@@ -84,7 +84,7 @@ const Form = ({ currentId, setCurrentId, setBool, bool }) => {
         autoComplete="off"
         noValidate
         className={`${classes.root} ${classes.form}`}
-        onSubmit={handleSubmit}
+        // onSubmit={handleSubmit}
       >
         <Typography variant="h6">
           {currentId ? `Editing "${post.title}"` : <img src={logo} width="200px" alt="logo"/> }
@@ -146,7 +146,7 @@ const Form = ({ currentId, setCurrentId, setBool, bool }) => {
           color="primary"
           size="large"
           type="submit"
-          onClick={() => setBool(false)}
+          onClick={(e) => {setBool(false); handleSubmit(e)}}
           fullWidth
           // onCLick={useEffect(() => Posts)}
         >
