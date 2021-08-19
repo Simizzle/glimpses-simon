@@ -18,7 +18,8 @@ const App = () =>  {
       const data = await response.json();
       setPosts(data)
       console.log(posts);
-      setBool(true);}
+    }
+      setBool(true);
       fetchPosts();
       authUser(setUser)
     }, [bool, posts]);

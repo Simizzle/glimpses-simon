@@ -11,8 +11,8 @@ const Posts = ({ setCurrentId, bool, setBool }) => {
     if (bool === false) {
     const fetchPost = async () => {const response = await fetch(`${process.env.REACT_APP_REST_API}posts`);
       const data = await response.json();
-      setPosts(data);
-      setBool(true);}
+      setPosts(data);}
+      setBool(true);
       fetchPost();
     } 
    
