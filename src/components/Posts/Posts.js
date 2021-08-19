@@ -16,7 +16,7 @@ const Posts = ({ setCurrentId, bool, setBool }) => {
       fetchPost();
     } 
    
-  }, [bool, setBool]);
+  });
 
   return !posts.length ? (
     <CircularProgress />
