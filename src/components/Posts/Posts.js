@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Grid, CircularProgress } from "@material-ui/core";
 import Post from "./Post/Post";
 import useStyles from "./styles";
-import { fetchPosts } from "../../api";
 
 const Posts = ({ setCurrentId, bool, setBool }) => {
   const [posts, setPosts] = useState([]);
@@ -17,7 +16,7 @@ const Posts = ({ setCurrentId, bool, setBool }) => {
       fetchPost();
     } 
    
-  }, [bool]);
+  }, [bool, setBool]);
 
   return !posts.length ? (
     <CircularProgress />
