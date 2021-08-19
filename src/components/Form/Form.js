@@ -43,8 +43,9 @@ const Form = ({ currentId, setCurrentId, setBool, bool }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    console.log("steve");
     if (currentId === 0) {
+
       console.log(postData);
       createPost(postData);
       // clear();
