@@ -9,7 +9,7 @@ import { faComment } from '@fortawesome/free-solid-svg-icons'
 import "./navbar.css";
 
 
-export const Navbar = ({setUser}) => {
+export const Navbar = ({setUser, setBool}) => {
 
   const logOutHandler = (e) =>{
     e.preventDefault();
@@ -27,7 +27,7 @@ export const Navbar = ({setUser}) => {
             <Link to="/MyPosts" className="navText"><FontAwesomeIcon icon={faComment} /> Posts </Link>
           </li>
           <li>
-            <Link to="/FullMap" className="navText"><FontAwesomeIcon icon={faGlobeAmericas} /> Map </Link> 
+            <Link onClick={() => setBool(false)} to="/FullMap" className="navText"><FontAwesomeIcon icon={faGlobeAmericas} /> Map </Link> 
           </li>
           <li>
             <Link to="/account" className="navText"><FontAwesomeIcon icon={faUserCircle} /> Account Details </Link>

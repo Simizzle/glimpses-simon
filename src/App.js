@@ -22,11 +22,11 @@ const App = () =>  {
     const data = await response.json();
     setPosts(data);
   }
-      setBool(true);
       fetchPosts();
+      setBool(true);
 }
       if (!user){authUser(setUser)}
-    });
+    }, [bool]);
       return (
         <AppContainer>
           {user ? <Redirect to= '/profile'/> : <Redirect to = '/'/>}
@@ -35,19 +35,19 @@ const App = () =>  {
           </Route>
           <div>
           <Route path='/account'>
-          <Navbar setUser={setUser}/>
+          <Navbar setBool ={setBool} setUser={setUser}/>
         <Account user={user}/>
            </Route>
           <Route path='/profile'>
-          <Navbar setUser={setUser}/>
+          <Navbar setBool ={setBool} setUser={setUser}/>
             <Profile user={user}/>
           </Route>
           <Route path='/MyPosts'>
-          <Navbar setUser={setUser}/>
+          <Navbar setBool ={setBool} setUser={setUser}/>
             <MyPosts user={user}/>
           </Route>
           <Route path='/FullMap'>
-          <Navbar setUser={setUser}/>
+          <Navbar setBool ={setBool} setUser={setUser}/>
           <FullMap posts={posts}/>
           </Route>
           </div>
