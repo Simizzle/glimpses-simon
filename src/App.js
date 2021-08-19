@@ -20,8 +20,7 @@ const App = () =>  {
       if (bool === false) {
       const fetchPosts = async () => { const response = await fetch(`${process.env.REACT_APP_REST_API}posts`);
     const data = await response.json();
-    setPosts(data)
-    console.log(posts);
+    setPosts(data);
   }
       setBool(true);
       fetchPosts();
